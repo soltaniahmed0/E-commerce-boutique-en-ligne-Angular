@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <!-- Bootstrap icons-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+
+</head>
+<body>
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <div class="container px-4 px-lg-5">
+    <a class="navbar-brand" href="products"><i class="bi bi-shop"> Soltani Shop</i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact">contact</a></li>
+
+      </ul>
+      <form class="d-inline-flex">
+        <h1 class="badge bg-dark text-white ms-1 rounded-pill" *ngIf="connName">hello {{connName}}</h1>
+        <button class="btn btn-outline-dark d-flex" type="submit" onclick="location.href='order'">
+
+          <a href="order" style="text-decoration: none ; color: black" ><i class="bi-cart-fill me-1"></i>Cart</a>
+          <span class="badge bg-dark text-white ms-1 rounded-pill">{{p}}</span>
+        </button>
+        <button  class="btn  d-flex" type="submit" style="margin-left: 5px" onclick="location.href='login'"  >
+          {{ !connName ? 'Login | Sign Up' : 'Sign Out'  }}
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>
+<!-- Header-->

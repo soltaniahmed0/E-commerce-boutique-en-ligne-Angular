@@ -1,0 +1,50 @@
+
+<div class="container" *ngIf="connid!='1'">
+  <div style="text-align:center">
+    <h2>Contact Us</h2>
+    <p>Swing by for a cup of coffee, or leave us a message:</p>
+  </div>
+  <div class="row">
+    <div class="column">
+      <img src="http://localhost:4200/assets/img/map.jpg" style="width:100%">
+    </div>
+    <div class="column">
+      <form (submit)="addcontact(addform)" #addform="ngForm">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="firstname" placeholder="Your name.." ngModel required>
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lastname" placeholder="Your last name.."  ngModel required>
+        <label for="country">Country</label>
+        <select id="country" name="countryd" ngModel required>
+          <option value="australia">Tunisia</option>
+          <option value="canada">Canada</option>
+          <option value="usa">USA</option>
+        </select>
+        <label for="subject">Subject</label>
+        <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"  ngModel required></textarea>
+        <button class="btn btn-primary" [disabled]="!addform.valid" onclick="location.reload();"> Submit </button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="container" *ngIf="connid=='1'" >
+  <h3>les contacts des clients</h3>
+  <table class="table">
+    <tr>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>Country</th>
+      <th>Subject</th>
+    </tr>
+
+  <ng-container *ngFor="let con of contacts">
+    <tr>
+      <td>{{con.FirstName}}</td>
+      <td>{{con.LastName}}</td>
+      <td>{{con.Country}}</td>
+      <td>{{con.Subject}}</td>
+    </tr>
+  </ng-container>
+  </table>
+</div>
+

@@ -1,0 +1,527 @@
+{
+  "product": [
+    {
+      "id": "1",
+      "name": "shirt1",
+      "category_id": 3,
+      "description": "description 1",
+      "rating": "8",
+      "price": 200,
+      "availble": true,
+      "review": 8,
+      "color": "white",
+      "img": "http://localhost:4200/assets/img/f1.jpg",
+      "vondorname": "ahmed"
+    },
+    {
+      "id": "2",
+      "name": "shirt1",
+      "category_id": 4,
+      "description": "description 1",
+      "rating": "8",
+      "price": 150,
+      "availble": true,
+      "review": 5,
+      "color": "white",
+      "img": "http://localhost:4200/assets/img/k1.jpg",
+      "vondorname": "mo7sen"
+    },
+    {
+      "id": "3",
+      "name": "shirt1",
+      "category_id": 2,
+      "description": "description 1",
+      "rating": "8",
+      "price": 200,
+      "availble": true,
+      "review": 8,
+      "color": "#000000",
+      "img": "http://localhost:4200/assets/img/m5.jpg",
+      "vondorname": "ahmed"
+    },
+    {
+      "id": "4",
+      "name": "shirt2",
+      "category_id": 3,
+      "description": "description 12",
+      "rating": "5",
+      "price": 200,
+      "availble": true,
+      "review": 7,
+      "color": "blue",
+      "img": "http://localhost:4200/assets/img/f2.jpg",
+      "vondorname": "ahmed1"
+    },
+    {
+      "id": "5",
+      "name": "shirt2",
+      "category_id": 2,
+      "description": "description 12",
+      "rating": "5",
+      "price": 200,
+      "availble": true,
+      "review": 7,
+      "color": "blue",
+      "img": "http://localhost:4200/assets/img/m6.jpg",
+      "vondorname": "ahmed"
+    },
+    {
+      "id": "6",
+      "name": "shirt2",
+      "category_id": 4,
+      "description": "description 12",
+      "rating": "5",
+      "price": 200,
+      "availble": true,
+      "review": 7,
+      "color": "blue",
+      "img": "http://localhost:4200/assets/img/k15.jpg",
+      "vondorname": "ahmed"
+    },
+    {
+      "id": "7",
+      "name": "shirt3",
+      "category_id": 3,
+      "description": "description 123",
+      "rating": "4",
+      "price": 500,
+      "availble": true,
+      "review": 7,
+      "color": "blue",
+      "img": "http://localhost:4200/assets/img/f3.jpg",
+      "vondorname": "ahmed"
+    },
+    {
+      "id": "8",
+      "name": "shirt3",
+      "category_id": 2,
+      "description": "description 123",
+      "rating": "4",
+      "price": 500,
+      "availble": true,
+      "review": 7,
+      "color": "blue",
+      "img": "http://localhost:4200/assets/img/m8.jpg",
+      "vondorname": "ahmed"
+    },
+    {
+      "id": "9",
+      "name": "shirt3",
+      "category_id": 4,
+      "description": "description 123",
+      "rating": "4",
+      "price": 500,
+      "availble": true,
+      "review": 7,
+      "color": "blue",
+      "img": "http://localhost:4200/assets/img/k2.jpg",
+      "vondorname": "ahmed"
+    },
+    {
+      "id": "10",
+      "name": "veste",
+      "category_id": 3,
+      "description": "string",
+      "rating": "4",
+      "price": 100,
+      "availble": true,
+      "review": 4,
+      "color": "red",
+      "img": "http://localhost:4200/assets/img/f4.jpg",
+      "vondorname": "string"
+    },
+    {
+      "id": "11",
+      "name": "veste",
+      "category_id": 2,
+      "description": "string",
+      "rating": "4",
+      "price": 100,
+      "availble": true,
+      "review": 4,
+      "color": "red",
+      "img": "http://localhost:4200/assets/img/m7.jpg",
+      "vondorname": "string"
+    },
+    {
+      "id": "12",
+      "name": "shirt1",
+      "category_id": 2,
+      "description": "description 1",
+      "rating": "8",
+      "price": 200,
+      "availble": true,
+      "review": 8,
+      "color": "white",
+      "img": "http://localhost:4200/assets/img/m1.jpg",
+      "vondorname": "ahmed"
+    },
+    {
+      "id": "13",
+      "name": "shirt1",
+      "category_id": 4,
+      "description": "description 1",
+      "rating": "8",
+      "price": 200,
+      "availble": true,
+      "review": 8,
+      "color": "white",
+      "img": "http://localhost:4200/assets/img/k16.jpg",
+      "vondorname": "ahmed"
+    },
+    {
+      "id": "14",
+      "name": "shirt2",
+      "category_id": 2,
+      "description": "description 12",
+      "rating": "5",
+      "price": 200,
+      "availble": true,
+      "review": 7,
+      "color": "blue",
+      "img": "http://localhost:4200/assets/img/m2.jpg",
+      "vondorname": "ahmed"
+    },
+    {
+      "id": "15",
+      "name": "shirt2",
+      "category_id": 4,
+      "description": "description 12",
+      "rating": "5",
+      "price": 200,
+      "availble": true,
+      "review": 7,
+      "color": "blue",
+      "img": "http://localhost:4200/assets/img/k20.jpg",
+      "vondorname": "ahmed"
+    },
+    {
+      "id": "16",
+      "name": "shirt2",
+      "category_id": 3,
+      "description": "description 12",
+      "rating": "5",
+      "price": 200,
+      "availble": true,
+      "review": 7,
+      "color": "blue",
+      "img": "http://localhost:4200/assets/img/f9.jpg",
+      "vondorname": "ahmed"
+    },
+    {
+      "id": "17",
+      "name": "shirt2",
+      "category_id": 4,
+      "description": "description 12",
+      "rating": "5",
+      "price": 200,
+      "availble": true,
+      "review": 7,
+      "color": "blue",
+      "img": "http://localhost:4200/assets/img/k3.jpg",
+      "vondorname": "ahmed"
+    },
+    {
+      "id": "18",
+      "name": "shirt3",
+      "category_id": 2,
+      "description": "description 123",
+      "rating": "4",
+      "price": 500,
+      "availble": true,
+      "review": 7,
+      "color": "blue",
+      "img": "http://localhost:4200/assets/img/m3.jpg",
+      "vondorname": "ahmed"
+    },
+    {
+      "id": "19",
+      "name": "shirt3",
+      "category_id": 4,
+      "description": "description 123",
+      "rating": "4",
+      "price": 500,
+      "availble": true,
+      "review": 7,
+      "color": "blue",
+      "img": "http://localhost:4200/assets/img/k4.jpg",
+      "vondorname": "ahmed"
+    },
+    {
+      "id": "20",
+      "name": "veste",
+      "category_id": 2,
+      "description": "string",
+      "rating": "4",
+      "price": 100,
+      "availble": true,
+      "review": 4,
+      "color": "red",
+      "img": "http://localhost:4200/assets/img/m4.jpg",
+      "vondorname": "string"
+    },
+    {
+      "id": 21,
+      "name": "user",
+      "category_id": 4,
+      "description": "kids",
+      "rating": "4",
+      "price": 5,
+      "availble": true,
+      "review": 5,
+      "color": "#e60a0a",
+      "img": "http://localhost:4200/assets/img/k18.jpg",
+      "vondorname": "hmed"
+    },
+    {
+      "id": 22,
+      "name": "mensi",
+      "category_id": 4,
+      "description": "vszvszrv",
+      "rating": "4",
+      "price": 1,
+      "availble": true,
+      "review": 4,
+      "color": "#e70d0d",
+      "img": "http://localhost:4200/assets/img/k10.jpg",
+      "vondorname": "ahmed"
+    }
+  ],
+  "categories": [
+    {
+      "id": 2,
+      "name": "Men"
+    },
+    {
+      "id": 3,
+      "name": "Women"
+    },
+    {
+      "id": 4,
+      "name": "Kids"
+    }
+  ],
+  "contact": [
+    {
+      "id": 1,
+      "FirstName": "ahmed",
+      "LastName": "soltani",
+      "Country": "tunisia",
+      "Subject": "************"
+    },
+    {
+      "id": 2,
+      "FirstName": "mohsen",
+      "LastName": "ben",
+      "Country": "australia",
+      "Subject": "mmmmmmmmmmm"
+    },
+    {
+      "id": 3,
+      "FirstName": "maysem",
+      "LastName": "test",
+      "Country": "canada",
+      "Subject": "hghghghgh"
+    },
+    {
+      "id": 4,
+      "FirstName": "mohsen",
+      "LastName": "erregreg",
+      "Country": "australia",
+      "Subject": "3ammi ahmed setek 5ayeb "
+    },
+    {
+      "id": 5,
+      "FirstName": "mensi",
+      "LastName": "efeberb",
+      "Country": "canada",
+      "Subject": "blhi yzzi m ser9a"
+    },
+    {
+      "id": 6,
+      "FirstName": "monji ",
+      "LastName": "vzrrvzrv",
+      "Country": "usa",
+      "Subject": "leeee"
+    },
+    {
+      "id": 7,
+      "FirstName": "alaa",
+      "LastName": "alaa",
+      "Country": "australia",
+      "Subject": "test123 test"
+    }
+  ],
+  "login": [
+    {
+      "id": 1,
+      "EMail": "admin@admin",
+      "Password": "admin1",
+      "FirstName": "admin",
+      "LastName": "admin",
+      "Country": ""
+    },
+    {
+      "id": 2,
+      "EMail": "admin@admin1",
+      "Password": "soltani",
+      "FirstName": "soltani",
+      "LastName": "soltani",
+      "Country": "canada"
+    },
+    {
+      "id": 3,
+      "EMail": "ahmed@1",
+      "Password": "alaa123",
+      "FirstName": "alaa",
+      "LastName": "alaa",
+      "Country": "australia"
+    },
+    {
+      "id": 4,
+      "EMail": "maysem@1",
+      "Password": "azertyui",
+      "FirstName": "maysem",
+      "LastName": "ben mead",
+      "Country": "usa"
+    },
+    {
+      "id": 5,
+      "EMail": "ahmed@12",
+      "Password": "5435131",
+      "FirstName": "mohsen",
+      "LastName": "ben",
+      "Country": "canada"
+    },
+    {
+      "id": 6,
+      "EMail": "monji@gmail.com",
+      "Password": "monji123",
+      "FirstName": "monji1",
+      "LastName": "monji",
+      "Country": "australia"
+    }
+  ],
+  "cart": [
+    {
+      "id": 5,
+      "name": "shirt2",
+      "category_id": 4,
+      "description": "description 12",
+      "rating": "5",
+      "price": 200,
+      "availble": true,
+      "review": 7,
+      "color": "blue",
+      "img": "http://localhost:4200/assets/img/k15.jpg",
+      "vondorname": "ahmed",
+      "idp": "6",
+      "user": "3"
+    },
+    {
+      "id": 6,
+      "name": "shirt1",
+      "category_id": 4,
+      "description": "description 1",
+      "rating": "8",
+      "price": 200,
+      "availble": true,
+      "review": 8,
+      "color": "white",
+      "img": "http://localhost:4200/assets/img/k16.jpg",
+      "vondorname": "ahmed",
+      "idp": "13",
+      "user": "3"
+    },
+    {
+      "id": 11,
+      "name": "shirt1",
+      "category_id": 4,
+      "description": "description 1",
+      "rating": "8",
+      "price": 150,
+      "availble": true,
+      "review": 5,
+      "color": "white",
+      "img": "http://localhost:4200/assets/img/k1.jpg",
+      "vondorname": "mo7sen",
+      "idp": "2",
+      "user": "1"
+    },
+    {
+      "id": 12,
+      "name": "shirt2",
+      "category_id": 3,
+      "description": "description 12",
+      "rating": "5",
+      "price": 200,
+      "availble": true,
+      "review": 7,
+      "color": "blue",
+      "img": "http://localhost:4200/assets/img/f2.jpg",
+      "vondorname": "ahmed1",
+      "idp": "4",
+      "user": "1"
+    },
+    {
+      "id": 7,
+      "name": "shirt2",
+      "category_id": 3,
+      "description": "description 12",
+      "rating": "5",
+      "price": 200,
+      "availble": true,
+      "review": 7,
+      "color": "blue",
+      "img": "http://localhost:4200/assets/img/f2.jpg",
+      "vondorname": "ahmed1",
+      "idp": "4",
+      "user": "3"
+    },
+    {
+      "id": 8,
+      "name": "shirt1",
+      "category_id": 2,
+      "description": "description 1",
+      "rating": "8",
+      "price": 200,
+      "availble": true,
+      "review": 8,
+      "color": "#000000",
+      "img": "http://localhost:4200/assets/img/m5.jpg",
+      "vondorname": "ahmed",
+      "idp": "3",
+      "user": "3"
+    },
+    {
+      "id": 14,
+      "name": "shirt1",
+      "category_id": 4,
+      "description": "description 1",
+      "rating": "8",
+      "price": 150,
+      "availble": true,
+      "review": 5,
+      "color": "white",
+      "img": "http://localhost:4200/assets/img/k1.jpg",
+      "vondorname": "mo7sen",
+      "idp": "2",
+      "user": "6"
+    },
+    {
+      "id": 15,
+      "name": "shirt1",
+      "category_id": 2,
+      "description": "description 1",
+      "rating": "8",
+      "price": 200,
+      "availble": true,
+      "review": 8,
+      "color": "#000000",
+      "img": "http://localhost:4200/assets/img/m5.jpg",
+      "vondorname": "ahmed",
+      "idp": "3",
+      "user": "6"
+    }
+  ]
+}

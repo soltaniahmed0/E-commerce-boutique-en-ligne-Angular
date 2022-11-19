@@ -1,0 +1,52 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container pb-1 mb-1 py-5">
+
+  <!-- Cart Item-->
+  <div style="margin-right:-5%" class="cart-item d-lg-flex justify-content-between  " *ngFor="let card of cartList"><span class="remove-item" (click)="delateFromCart(card.id)" onclick="location.reload()"><i class="fa fa-times"></i></span>
+    <div class="px-1 my-1">
+      <a class="cart-item-product" href="products/view-product/{{card.idp}}">
+        <div class="cart-item-product-thumb"><img src="{{card.img}}" alt="Product"></div>
+        <div class="cart-item-product-info">
+          <h4 class="cart-item-product-title">{{card.name}}</h4><span><strong>Descreption :</strong> {{card.description}}</span><span><strong >Color  <input type="text" style="font-size: 3px ;background-color:{{card.color}}"> </strong>
+          </span>
+        </div>
+      </a>
+    </div>
+
+    <div class="px-1 my-1 text-center" style="padding-left: -4%">
+      <div class="cart-item-label">Quantity</div>
+      <div class="count-input">
+        <select class="form-control" [(ngModel)]="qtt[card.id]" (change)="updateTotal()">
+          <option [selected] >1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+        </select>
+      </div>
+    </div>
+    <div class="px-1 my-1 text-center" style="margin-right: 10%">
+      <div class="cart-item-label" >Subtotal</div><span class="text-xl font-weight-medium">{{(Number(qtt[card.id]))*card.price}}DT</span>
+    </div>
+
+  </div>
+  <!-- Coupon + Subtotal-->
+  <div class="d-sm-flex justify-content-between align-items-center text-center text-sm-left">
+ <!--     <form class="form-inline py-2">
+        <label class="sr-only">Coupon code</label>
+        <input class="form-control form-control-sm my-2 mr-3" type="text" placeholder="Coupon code" required="">
+        <button class="btn btn-style-1 btn-secondary btn-sm my-2 mx-auto mx-sm-0" type="submit">Apply Coupon</button>
+      </form>-->
+    <div class="py-2"><span class="d-inline-block align-middle text-sm text-muted font-weight-medium text-uppercase mr-2">Subtotal:</span><span class="d-inline-block align-middle text-xl font-weight-medium">{{total}}DT</span></div>
+  </div>
+  <!-- Buttons-->
+  <hr class="my-2">
+  <div class="row pt-3 pb-5 mb-2">
+    <div class="col-sm-6 mb-3"><a class="btn btn-style-1 btn-secondary btn-block" href="products"><i class="fe-icon-refresh-ccw"></i>&nbsp;Update Cart</a></div>
+    <div class="col-sm-6 mb-3"><a class="btn btn-style-1 btn-primary btn-block" href="checkout-address.html"><i class="fe-icon-credit-card"></i>&nbsp;Checkout</a></div>
+  </div>
+
+
+</div>
+

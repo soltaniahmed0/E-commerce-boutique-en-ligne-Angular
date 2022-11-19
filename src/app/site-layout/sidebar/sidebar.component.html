@@ -1,0 +1,6 @@
+<div class="py-4"></div><a href="products" class="list-group-item py-3" > All </a>
+<a href="products/add-product" class="list-group-item py-3" *ngIf="connid=='1'"> Add product </a>
+<div class="list-group" *ngFor="let cat of categoryl">
+  <a href="products/categories/{{cat.id}}" class="list-group-item py-3" > {{cat.name}} </a>
+</div>
+

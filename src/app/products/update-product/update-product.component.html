@@ -1,0 +1,83 @@
+<h2 class="bg-light mb-2 text-center">Update Product</h2>
+<form (submit)="update(addProductForm)" #addProductForm="ngForm">
+  <table>
+    <tr>
+      <td>
+        <div class="col-md-12 mb-3">
+          <label for="validationServer01">Product name</label>
+          <input type="text" class="form-control" id="validationServer01" placeholder="Enter Product name"  required ngModel  name="name" [ngModel]="productdata.name">
+
+        </div>
+      </td>
+      <td>
+        <div class="col-md-12 mb-3">
+          <label for="validationServer02">category_id</label>
+          <input type="number" class="form-control" id="validationServer02" placeholder="category_id" value="Otto" required name="category_id" ngModel [ngModel]="productdata.category_id">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="col-md-12 mb-3">
+          <label for="validationServer0">description</label>
+          <input type="txt" class="form-control" id="validationServer0" placeholder="description" value="Otto" required name="description" ngModel [ngModel]="productdata.description">
+        </div>
+      </td>
+      <td>
+        <div class="col-md-12 mb-3">
+          <label for="validationServer03">rating</label>
+          <input type="txt" class="form-control" id="validationServer03" placeholder="rating" value="Otto" required name="rating" ngModel [ngModel]="productdata.rating">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="col-md-12 mb-3">
+          <label for="validationServer04">price</label>
+          <input type="number" class="form-control" id="validationServer04" placeholder="price" value="Otto" required name="price" ngModel [ngModel]="productdata.price">
+        </div>
+      </td>
+      <td>
+        <div class="col-md-12 mb-3">
+          <label for="validationServer05">review</label>
+          <input type="number" class="form-control" id="validationServer05" placeholder="review" value="Otto" required name="review" ngModel [ngModel]="productdata.review">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="col-md-12 mb-3">
+          <label for="validationServer07">vondorname</label>
+          <input type="txt" class="form-control" id="validationServer07" placeholder="vondorname" value="Otto" required name="vondorname" ngModel [ngModel]="productdata.vondorname">
+        </div>
+
+      </td>
+      <td>
+        <div class="col-md-12 mb-3">
+          <label for="validationServer08">img</label>
+          <input type="txt" class="form-control" id="validationServer08" placeholder="img" value="Otto" required name="img" ngModel [ngModel]="productdata.img">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="col-md-12 mb-3">
+          <label for="validationServer06">color</label><br>
+          <input type="color"  id="validationServer06" placeholder="rating" value="Otto" required name="color" ngModel  [ngModel]="productdata.color">
+        </div>
+      </td>
+      <td>
+        <button class="btn btn-primary" type="submit" [disabled]="!addProductForm.valid" onclick="location.href='products'">Update product</button>
+      </td>
+    </tr>
+  </table>
+
+
+
+
+
+
+
+
+</form>
+
