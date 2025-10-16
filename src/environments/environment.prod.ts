@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://your-json-server-url.vercel.app' // You'll need to deploy your JSON server separately
+  apiUrl: 'https://ecommerce-api-json-server.vercel.app' // Deploy this separately
 };

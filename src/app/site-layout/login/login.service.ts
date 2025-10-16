@@ -3,12 +3,13 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import { User } from './login';
 import {Product} from "../../products/product";
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  url="http://localhost:3000/login";
+  url=`${environment.apiUrl}/login`;
   constructor(private httpClient:HttpClient) { }
 
   getUser():Observable<User[]>{
@@ -21,7 +22,7 @@ export class LoginService {
   }
 
   viewcart(user :any):Observable<Product> {
-    const Url="http://localhost:3000/cart?user="+user;
+    const Url=`${environment.apiUrl}/cart?user=`+user;
     return this.httpClient.get<Product>(Url);
   }
 }
