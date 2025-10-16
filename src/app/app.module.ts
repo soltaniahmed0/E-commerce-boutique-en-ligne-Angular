@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListOrderComponent } from './list-order/list-order.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 import {SiteLayoutModule} from "./site-layout/site-layout.module";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule } from '@angular/common/http';
@@ -14,7 +16,8 @@ import {FormsModule} from "@angular/forms";
   declarations: [
     AppComponent,
     ListOrderComponent,
-
+    CheckoutComponent,
+    WishlistComponent,
   ],
     imports: [
         BrowserModule,

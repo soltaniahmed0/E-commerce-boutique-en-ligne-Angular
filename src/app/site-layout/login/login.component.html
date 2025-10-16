@@ -1,68 +1,242 @@
-<div class="row form-control">
-  <div class="col-xs-12 col-md-6 col-md-offset-3" style="margin-left: 20%">
-    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="isLoginMode">
-      <div class="form-group">
-        <label for="email">E-Mail </label>
-        <input type="email" id="email" class="form-control" ngModel name="email" required email/>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" class="form-control" ngModel name="password" required minlength="6"/>
-      </div>
-      <br>
-      <div>
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h2 class="login-title">
+        <i class="bi bi-shop me-2"></i>
+        Soltani Fashion
+      </h2>
+      <p class="login-subtitle">
+        {{ isLoginMode ? 'Welcome back! Please sign in to your account.' : 'Create your account to start shopping.' }}
+      </p>
+    </div>
 
+    <!-- Error/Success Messages -->
+    <div class="alert alert-danger" *ngIf="errorMessage" role="alert">
+      <i class="bi bi-exclamation-triangle me-2"></i>
+      {{ errorMessage }}
+    </div>
+    
+    <div class="alert alert-success" *ngIf="successMessage" role="alert">
+      <i class="bi bi-check-circle me-2"></i>
+      {{ successMessage }}
+    </div>
+
+    <!-- Login Form -->
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="isLoginMode" class="login-form">
+      <div class="form-group mb-3">
+        <label for="email" class="form-label">
+          <i class="bi bi-envelope me-1"></i>
+          Email Address
+        </label>
+        <input 
+          type="email" 
+          id="email" 
+          class="form-control" 
+          ngModel 
+          name="email" 
+          required 
+          email
+          placeholder="Enter your email"
+          [class.is-invalid]="authForm.submitted && authForm.controls['email']?.invalid"
+        />
+        <div class="invalid-feedback" *ngIf="authForm.submitted && authForm.controls['email']?.invalid">
+          Please enter a valid email address.
+        </div>
+      </div>
+      
+      <div class="form-group mb-4">
+        <label for="password" class="form-label">
+          <i class="bi bi-lock me-1"></i>
+          Password
+        </label>
+        <input 
+          type="password" 
+          id="password" 
+          class="form-control" 
+          ngModel 
+          name="password" 
+          required 
+          minlength="6"
+          placeholder="Enter your password"
+          [class.is-invalid]="authForm.submitted && authForm.controls['password']?.invalid"
+        />
+        <div class="invalid-feedback" *ngIf="authForm.submitted && authForm.controls['password']?.invalid">
+          Password must be at least 6 characters long.
+        </div>
+      </div>
+      
+      <div class="form-actions">
         <button
-          class="btn btn-primary"
+          class="btn btn-primary btn-lg w-100"
           type="submit"
-          [disabled]="!authForm.valid"
+          [disabled]="!authForm.valid || isLoading"
         >
-          {{ isLoginMode ? 'Login' : 'Sign Up' }}
+          <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+          <i *ngIf="!isLoading" class="bi bi-box-arrow-in-right me-2"></i>
+          {{ isLoading ? 'Signing in...' : 'Sign In' }}
         </button>
-        |
-        <button class="btn btn-primary" (click)="onSwitchMode()" type="button">
-          Switch to {{ isLoginMode ? 'Sign Up' : 'Login' }}
+        
+        <div class="divider">
+          <span>or</span>
+        </div>
+        
+        <button 
+          class="btn btn-outline-primary w-100" 
+          (click)="onSwitchMode()" 
+          type="button"
+          [disabled]="isLoading"
+        >
+          <i class="bi bi-person-plus me-2"></i>
+          Create New Account
         </button>
+        
+        <!-- Debug Section -->
+        <div class="debug-section mt-3">
+          <button 
+            class="btn btn-outline-secondary btn-sm w-100" 
+            (click)="testLogin()" 
+            type="button"
+          >
+            <i class="bi bi-bug me-2"></i>
+            Test Login (test@example.com / 123456)
+          </button>
+        </div>
       </div>
     </form>
-    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoginMode">
-      <div class="form-group">
-        <label for="email">E-Mail</label>
-        <input type="email" id="email1" class="form-control" ngModel name="email1" required email/>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password1" class="form-control" ngModel name="password1" required minlength="6"/>
-      </div>
-        <div class="form-group">
-          <label for="fname">First Name</label>
-          <input type="text" id="fname" class="form-control" name="firstname" placeholder="Your name.." ngModel required><br>
-        </div>
-          <div class="form-group">
-          <label for="lname">Last Name</label><br>
-          <input type="text" id="lname" class="form-control" name="lastname" placeholder="Your last name.."  ngModel required><br>
+    <!-- Signup Form -->
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoginMode" class="signup-form">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="firstname" class="form-label">
+            <i class="bi bi-person me-1"></i>
+            First Name
+          </label>
+          <input 
+            type="text" 
+            id="firstname" 
+            class="form-control" 
+            name="firstname" 
+            placeholder="Your first name" 
+            ngModel 
+            required
+            [class.is-invalid]="authForm.submitted && authForm.controls['firstname']?.invalid"
+          />
+          <div class="invalid-feedback" *ngIf="authForm.submitted && authForm.controls['firstname']?.invalid">
+            First name is required.
           </div>
-        <div class="form-group">
-          <label for="country">Country</label>
-          <select class="form-control" id="country" name="countryd" ngModel required>
-
-        <option value="australia">Tunisia</option>
-        <option value="canada">Canada</option>
-        <option value="usa">USA</option>
-      </select>
         </div>
-      <br>
-      <div>
-        <button
-          class="btn btn-primary"
-          type="submit"
-          [disabled]="!authForm.valid"
+        
+        <div class="col-md-6 mb-3">
+          <label for="lastname" class="form-label">
+            <i class="bi bi-person me-1"></i>
+            Last Name
+          </label>
+          <input 
+            type="text" 
+            id="lastname" 
+            class="form-control" 
+            name="lastname" 
+            placeholder="Your last name" 
+            ngModel 
+            required
+            [class.is-invalid]="authForm.submitted && authForm.controls['lastname']?.invalid"
+          />
+          <div class="invalid-feedback" *ngIf="authForm.submitted && authForm.controls['lastname']?.invalid">
+            Last name is required.
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group mb-3">
+        <label for="email1" class="form-label">
+          <i class="bi bi-envelope me-1"></i>
+          Email Address
+        </label>
+        <input 
+          type="email" 
+          id="email1" 
+          class="form-control" 
+          ngModel 
+          name="email1" 
+          required 
+          email
+          placeholder="Enter your email"
+          [class.is-invalid]="authForm.submitted && authForm.controls['email1']?.invalid"
+        />
+        <div class="invalid-feedback" *ngIf="authForm.submitted && authForm.controls['email1']?.invalid">
+          Please enter a valid email address.
+        </div>
+      </div>
+      
+      <div class="form-group mb-3">
+        <label for="password1" class="form-label">
+          <i class="bi bi-lock me-1"></i>
+          Password
+        </label>
+        <input 
+          type="password" 
+          id="password1" 
+          class="form-control" 
+          ngModel 
+          name="password1" 
+          required 
+          minlength="6"
+          placeholder="Create a password"
+          [class.is-invalid]="authForm.submitted && authForm.controls['password1']?.invalid"
+        />
+        <div class="invalid-feedback" *ngIf="authForm.submitted && authForm.controls['password1']?.invalid">
+          Password must be at least 6 characters long.
+        </div>
+      </div>
+      
+      <div class="form-group mb-4">
+        <label for="country" class="form-label">
+          <i class="bi bi-globe me-1"></i>
+          Country
+        </label>
+        <select 
+          class="form-control" 
+          id="country" 
+          name="countryd" 
+          ngModel 
+          required
+          [class.is-invalid]="authForm.submitted && authForm.controls['countryd']?.invalid"
         >
-          {{ isLoginMode ? 'Login' : 'Sign Up' }}
+          <option value="">Select your country</option>
+          <option value="Tunisia">Tunisia</option>
+          <option value="Canada">Canada</option>
+          <option value="USA">USA</option>
+          <option value="France">France</option>
+          <option value="Germany">Germany</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="authForm.submitted && authForm.controls['countryd']?.invalid">
+          Please select your country.
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <button
+          class="btn btn-primary btn-lg w-100"
+          type="submit"
+          [disabled]="!authForm.valid || isLoading"
+        >
+          <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+          <i *ngIf="!isLoading" class="bi bi-person-plus me-2"></i>
+          {{ isLoading ? 'Creating Account...' : 'Create Account' }}
         </button>
-        |
-        <button class="btn btn-primary" (click)="onSwitchMode()" type="button">
-          Switch to {{ isLoginMode ? 'Sign Up' : 'Login' }}
+        
+        <div class="divider">
+          <span>or</span>
+        </div>
+        
+        <button 
+          class="btn btn-outline-primary w-100" 
+          (click)="onSwitchMode()" 
+          type="button"
+          [disabled]="isLoading"
+        >
+          <i class="bi bi-box-arrow-in-right me-2"></i>
+          Already have an account? Sign In
         </button>
       </div>
     </form>

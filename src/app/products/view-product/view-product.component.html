@@ -1,42 +1,226 @@
 
-<section class="py-0">
-  <div class="container px-4 px-lg-9 my-5">
-    <div class="row gx-4 gx-lg-5 align-items-center">
-      <div class="col-md-6">
-        <img class="card-img-top mb-5 mb-md-0"  src="{{productdata.img}}" alt="..." height="400px"  >
+<!-- Modern Product Detail Page -->
+<div class="product-detail-container">
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-section">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/products">Products</a></li>
+          <li class="breadcrumb-item"><a routerLink="/products/categories/{{productdata.category_id}}">{{getCategoryName()}}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{productdata.name}}</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="container py-4">
+    <div class="row">
+      <!-- Product Images -->
+      <div class="col-lg-6">
+        <div class="product-images">
+          <div class="main-image">
+            <img [src]="productdata.img" [alt]="productdata.name" class="img-fluid">
+            <div class="image-badge" *ngIf="productdata.rating >= 8">
+              <span class="badge bg-success">Top Rated</span>
+            </div>
+          </div>
+          <div class="thumbnail-images">
+            <div class="thumbnail" *ngFor="let img of getProductImages()" 
+                 [class.active]="img === productdata.img"
+                 (click)="selectImage(img)">
+              <img [src]="img" alt="Product thumbnail">
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-md-6">
-        <div class="small mb-1"></div>
-        <h1 class="display-5 fw-bolder">{{productdata.name}}</h1>
-        <div class="fs-5 mb-5">
-          <span>{{productdata.price}} DT</span>
-        </div>
-        <div class="d-flex">
-          <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-          <button class="btn btn-outline-dark flex-shrink-0" type="button" (click)="addToCart()" [disabled]="!connid">
-            <i class="bi-cart-fill me-1"></i>
-            Add to cart
-          </button>
 
-        </div>
-        <div style="color: gold; font-size: 30px">
-        <ngb-rating [(rate)]="currentRate" ></ngb-rating>
-        </div>
-        <br>
+      <!-- Product Information -->
+      <div class="col-lg-6">
+        <div class="product-info">
+          <!-- Product Title -->
+          <h1 class="product-title">{{productdata.name}}</h1>
+          
+              <!-- Enhanced Product Rating -->
+              <div class="product-rating mb-4">
+                <app-rating 
+                  [rating]="getProductRating()" 
+                  [readonly]="true" 
+                  [showInfo]="true"
+                  [reviewCount]="getReviewCount()"
+                  [size]="'lg'"
+                  [color]="'primary'">
+                </app-rating>
+                <div class="rating-actions mt-2">
+                  <button class="btn btn-sm btn-outline-primary" (click)="scrollToReviews()">
+                    <i class="bi bi-chat-dots me-1"></i>Read Reviews
+                  </button>
+                  <button class="btn btn-sm btn-outline-success" (click)="writeReview()" *ngIf="connid">
+                    <i class="bi bi-pencil me-1"></i>Write Review
+                  </button>
+                </div>
+              </div>
 
-        <div class="d-flex" *ngIf="connid=='1'" >
-          <button class="btn btn-outline-dark flex-shrink-0" type="button" routerLink="update-product/{{productdata.id}}">
-            <a href="products/update-product/{{productdata.id}}" style="text-decoration: none" >Update product</a>
-          </button>
-          <button class="btn btn-outline-dark flex-shrink-0" type="button" >
-            <a href="products/delete-product/{{productdata.id}}" style="text-decoration: none">Delete product</a>
-          </button>
-        </div>
-        <br>
-        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+          <!-- Product Price -->
+          <div class="product-price mb-4">
+            <span class="current-price">{{productdata.price}} DT</span>
+            <span class="original-price" *ngIf="productdata.price > 100">{{productdata.price + 50}} DT</span>
+            <span class="discount-badge" *ngIf="productdata.price > 100">Save 50 DT</span>
+          </div>
 
+          <!-- Product Description -->
+          <div class="product-description mb-4">
+            <p>{{productdata.description}}</p>
+          </div>
+
+          <!-- Product Options -->
+          <div class="product-options mb-4">
+            <!-- Size Selection -->
+            <div class="option-group">
+              <label class="option-label">Size:</label>
+              <div class="size-options">
+                <button class="size-btn" *ngFor="let size of getSizes()" 
+                        [class.selected]="selectedSize === size"
+                        (click)="selectSize(size)">
+                  {{size}}
+                </button>
+              </div>
+            </div>
+
+            <!-- Color Selection -->
+            <div class="option-group">
+              <label class="option-label">Color:</label>
+              <div class="color-options">
+                <button class="color-btn" 
+                        [style.background-color]="productdata.color"
+                        [class.selected]="true"
+                        [title]="productdata.color">
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quantity and Add to Cart -->
+          <div class="add-to-cart-section mb-4">
+            <div class="quantity-controls">
+              <label class="quantity-label">Quantity:</label>
+              <div class="quantity-input-group">
+                <button class="btn btn-outline-secondary" (click)="decreaseQuantity()">
+                  <i class="bi bi-dash"></i>
+                </button>
+                <input type="number" class="form-control quantity-input" 
+                       [(ngModel)]="quantity" min="1" max="10">
+                <button class="btn btn-outline-secondary" (click)="increaseQuantity()">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+            </div>
+            
+            <div class="cart-actions">
+              <button class="btn btn-primary btn-lg" (click)="addToCart()" [disabled]="!connid">
+                <i class="bi bi-cart-plus me-2"></i>
+                Add to Cart
+              </button>
+              <button class="btn btn-outline-primary btn-lg" (click)="addToWishlist()">
+                <i class="bi bi-heart me-2"></i>
+                Add to Wishlist
+              </button>
+            </div>
+          </div>
+
+          <!-- Product Features -->
+          <div class="product-features">
+            <h6>Features:</h6>
+            <ul class="feature-list">
+              <li><i class="bi bi-check-circle text-success me-2"></i>Premium Quality Material</li>
+              <li><i class="bi bi-check-circle text-success me-2"></i>Free Shipping Worldwide</li>
+              <li><i class="bi bi-check-circle text-success me-2"></i>30-Day Return Policy</li>
+              <li><i class="bi bi-check-circle text-success me-2"></i>1-Year Warranty</li>
+            </ul>
+          </div>
+
+          <!-- Admin Actions -->
+          <div class="admin-actions" *ngIf="connid=='1'">
+            <hr>
+            <h6>Admin Actions:</h6>
+            <div class="admin-buttons">
+              <button class="btn btn-warning btn-sm" routerLink="update-product/{{productdata.id}}">
+                <i class="bi bi-pencil me-1"></i>Update Product
+              </button>
+              <button class="btn btn-danger btn-sm" (click)="deleteProduct()">
+                <i class="bi bi-trash me-1"></i>Delete Product
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Details Tabs -->
+    <div class="product-tabs mt-5">
+      <div class="tabs-container">
+        <ul class="nav nav-tabs" id="productTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="description-tab" data-bs-toggle="tab" 
+                    data-bs-target="#description" type="button" role="tab">
+              <i class="bi bi-info-circle me-2"></i>Description
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" 
+                    data-bs-target="#reviews" type="button" role="tab">
+              <i class="bi bi-star me-2"></i>Reviews ({{productdata.review}})
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="shipping-tab" data-bs-toggle="tab" 
+                    data-bs-target="#shipping" type="button" role="tab">
+              <i class="bi bi-truck me-2"></i>Shipping
+            </button>
+          </li>
+        </ul>
+        
+        <div class="tab-content" id="productTabsContent">
+          <!-- Description Tab -->
+          <div class="tab-pane fade show active" id="description" role="tabpanel">
+            <div class="tab-content-body">
+              <h5>Product Description</h5>
+              <p>{{productdata.description}}</p>
+              <p>This premium product is crafted with the finest materials and attention to detail. Perfect for those who appreciate quality and style.</p>
+            </div>
+          </div>
+          
+              <!-- Reviews Tab -->
+              <div class="tab-pane fade" id="reviews" role="tabpanel">
+                <div class="tab-content-body">
+                  <app-review 
+                    [reviews]="productReviews"
+                    [productId]="productdata.id"
+                    [userId]="connid || ''"
+                    [readonly]="!connid"
+                    [showSummary]="true"
+                    (reviewSubmitted)="onReviewSubmitted($event)"
+                    (reviewEdited)="onReviewEdited($event)"
+                    (reviewDeleted)="onReviewDeleted($event)">
+                  </app-review>
+                </div>
+              </div>
+          
+          <!-- Shipping Tab -->
+          <div class="tab-pane fade" id="shipping" role="tabpanel">
+            <div class="tab-content-body">
+              <h5>Shipping Information</h5>
+              <ul class="shipping-info">
+                <li><i class="bi bi-truck me-2"></i>Free shipping on orders over 100 DT</li>
+                <li><i class="bi bi-clock me-2"></i>Standard delivery: 3-5 business days</li>
+                <li><i class="bi bi-shield-check me-2"></i>Secure packaging guaranteed</li>
+                <li><i class="bi bi-arrow-clockwise me-2"></i>Easy returns within 30 days</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</section>
+</div>
 

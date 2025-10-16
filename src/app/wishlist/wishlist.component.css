@@ -1,0 +1,371 @@
+/* Modern Wishlist Styles */
+
+.wishlist-container {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 100vh;
+}
+
+/* Wishlist Header */
+.wishlist-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+
+.wishlist-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.wishlist-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin: 0.5rem 0 0 0;
+}
+
+/* Empty Wishlist */
+.empty-wishlist {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  margin: 2rem 0;
+}
+
+.empty-wishlist i {
+  color: #6c757d;
+  opacity: 0.5;
+}
+
+/* Wishlist Items */
+.wishlist-items {
+  margin-bottom: 2rem;
+}
+
+.wishlist-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.wishlist-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* Remove Button */
+.remove-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+  z-index: 2;
+}
+
+.remove-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(255, 107, 107, 0.4);
+}
+
+/* Product Image */
+.product-image {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.wishlist-card:hover .product-image img {
+  transform: scale(1.05);
+}
+
+.product-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.wishlist-card:hover .product-overlay {
+  opacity: 1;
+}
+
+/* Product Details */
+.product-details {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+.product-name a {
+  color: #2c3e50;
+  transition: color 0.3s ease;
+}
+
+.product-name a:hover {
+  color: #667eea;
+}
+
+.product-description {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin: 0 0 1rem 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Product Rating */
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stars {
+  color: #ffc107;
+  font-size: 0.9rem;
+}
+
+.rating-text {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+/* Product Price */
+.product-price {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.current-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.original-price {
+  font-size: 1rem;
+  color: #6c757d;
+  text-decoration: line-through;
+}
+
+/* Product Color */
+.product-color {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.color-label {
+  font-size: 0.8rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.color-swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Product Actions */
+.product-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.product-actions .btn {
+  flex: 1;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.75rem;
+}
+
+/* Wishlist Summary */
+.wishlist-summary {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.summary-info h5 {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.summary-info ul li {
+  padding: 0.5rem 0;
+  color: #495057;
+}
+
+/* Wishlist Stats */
+.wishlist-stats {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid #dee2e6;
+}
+
+.wishlist-stats h5 {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.stat-item:last-child {
+  border-bottom: none;
+}
+
+.stat-label {
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .wishlist-title {
+    font-size: 2rem;
+  }
+  
+  .wishlist-card {
+    margin-bottom: 1rem;
+  }
+  
+  .product-actions {
+    flex-direction: column;
+  }
+  
+  .product-actions .btn {
+    flex: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .wishlist-header {
+    padding: 1.5rem 0;
+  }
+  
+  .wishlist-title {
+    font-size: 1.75rem;
+  }
+  
+  .wishlist-summary {
+    padding: 1.5rem;
+  }
+  
+  .wishlist-stats {
+    padding: 1rem;
+  }
+}
+
+/* Animation for wishlist cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wishlist-card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.wishlist-card:nth-child(1) { animation-delay: 0.1s; }
+.wishlist-card:nth-child(2) { animation-delay: 0.2s; }
+.wishlist-card:nth-child(3) { animation-delay: 0.3s; }
+.wishlist-card:nth-child(4) { animation-delay: 0.4s; }
+.wishlist-card:nth-child(5) { animation-delay: 0.5s; }
+.wishlist-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Loading spinner */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5a6fd8;
+}

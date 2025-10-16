@@ -1,0 +1,288 @@
+<!-- Modern Checkout Page -->
+<div class="checkout-container">
+  <!-- Checkout Header -->
+  <div class="checkout-header">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h2 class="checkout-title">
+            <i class="bi bi-credit-card me-2"></i>
+            Checkout
+          </h2>
+          <p class="checkout-subtitle text-muted">Complete your purchase securely</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <button class="btn btn-outline-primary" (click)="goBack()">
+            <i class="bi bi-arrow-left me-1"></i>Back to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-4">
+    <div class="row">
+      <!-- Checkout Form -->
+      <div class="col-lg-8">
+        <div class="checkout-form">
+          <!-- Shipping Information -->
+          <div class="form-section">
+            <h5 class="section-title">
+              <i class="bi bi-truck me-2"></i>
+              Shipping Information
+            </h5>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label">First Name *</label>
+                  <input type="text" class="form-control" [(ngModel)]="shippingAddress.firstName" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label">Last Name *</label>
+                  <input type="text" class="form-control" [(ngModel)]="shippingAddress.lastName" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label class="form-label">Address *</label>
+                  <input type="text" class="form-control" [(ngModel)]="shippingAddress.address" required>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="form-label">Apartment/Suite</label>
+                  <input type="text" class="form-control" [(ngModel)]="shippingAddress.apartment">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="form-label">City *</label>
+                  <input type="text" class="form-control" [(ngModel)]="shippingAddress.city" required>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="form-label">State/Province *</label>
+                  <input type="text" class="form-control" [(ngModel)]="shippingAddress.state" required>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="form-label">ZIP/Postal Code *</label>
+                  <input type="text" class="form-control" [(ngModel)]="shippingAddress.zip" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label">Phone Number *</label>
+                  <input type="tel" class="form-control" [(ngModel)]="shippingAddress.phone" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label">Email Address *</label>
+                  <input type="email" class="form-control" [(ngModel)]="shippingAddress.email" required>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Billing Information -->
+          <div class="form-section">
+            <h5 class="section-title">
+              <i class="bi bi-credit-card me-2"></i>
+              Billing Information
+            </h5>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="sameAsShipping" 
+                     [(ngModel)]="sameAsShipping" (change)="onSameAsShippingChange()">
+              <label class="form-check-label" for="sameAsShipping">
+                Same as shipping address
+              </label>
+            </div>
+            
+            <div *ngIf="!sameAsShipping">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-label">First Name *</label>
+                    <input type="text" class="form-control" [(ngModel)]="billingAddress.firstName" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-label">Last Name *</label>
+                    <input type="text" class="form-control" [(ngModel)]="billingAddress.lastName" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label class="form-label">Address *</label>
+                    <input type="text" class="form-control" [(ngModel)]="billingAddress.address" required>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="form-label">Apartment/Suite</label>
+                    <input type="text" class="form-control" [(ngModel)]="billingAddress.apartment">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="form-label">City *</label>
+                    <input type="text" class="form-control" [(ngModel)]="billingAddress.city" required>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="form-label">State/Province *</label>
+                    <input type="text" class="form-control" [(ngModel)]="billingAddress.state" required>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="form-label">ZIP/Postal Code *</label>
+                    <input type="text" class="form-control" [(ngModel)]="billingAddress.zip" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment Method -->
+          <div class="form-section">
+            <h5 class="section-title">
+              <i class="bi bi-wallet2 me-2"></i>
+              Payment Method
+            </h5>
+            <div class="payment-methods">
+              <div class="payment-option" [class.active]="paymentMethod === 'card'" (click)="onPaymentMethodChange('card')">
+                <i class="bi bi-credit-card"></i>
+                <span>Credit/Debit Card</span>
+              </div>
+              <div class="payment-option" [class.active]="paymentMethod === 'paypal'" (click)="onPaymentMethodChange('paypal')">
+                <i class="bi bi-paypal"></i>
+                <span>PayPal</span>
+              </div>
+              <div class="payment-option" [class.active]="paymentMethod === 'apple'" (click)="onPaymentMethodChange('apple')">
+                <i class="bi bi-apple"></i>
+                <span>Apple Pay</span>
+              </div>
+            </div>
+
+            <!-- Card Details -->
+            <div *ngIf="paymentMethod === 'card'" class="card-details">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="form-label">Card Number *</label>
+                    <input type="text" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-label">Expiry Date *</label>
+                    <input type="text" class="form-control" placeholder="MM/YY" maxlength="5">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-label">CVV *</label>
+                    <input type="text" class="form-control" placeholder="123" maxlength="4">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="form-label">Cardholder Name *</label>
+                    <input type="text" class="form-control" placeholder="John Doe">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="col-lg-4">
+        <div class="order-summary-card">
+          <h5 class="summary-title">Order Summary</h5>
+          
+          <!-- Cart Items -->
+          <div class="cart-items-summary">
+            <div class="cart-item-summary" *ngFor="let item of cartItems">
+              <div class="item-image">
+                <img [src]="item.img" [alt]="item.name">
+              </div>
+              <div class="item-details">
+                <h6 class="item-name">{{item.name}}</h6>
+                <div class="item-meta">
+                  <span class="item-quantity">Qty: {{item.quantity || 1}}</span>
+                  <span class="item-price">{{item.price * (item.quantity || 1)}} DT</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Order Totals -->
+          <div class="order-totals">
+            <div class="total-row">
+              <span>Subtotal ({{orderSummary.itemCount}} items)</span>
+              <span>{{orderSummary.subtotal}} DT</span>
+            </div>
+            <div class="total-row">
+              <span>Shipping</span>
+              <span class="text-success" *ngIf="orderSummary.shipping === 0">Free</span>
+              <span *ngIf="orderSummary.shipping > 0">{{orderSummary.shipping}} DT</span>
+            </div>
+            <div class="total-row">
+              <span>Tax</span>
+              <span>{{orderSummary.tax}} DT</span>
+            </div>
+            <hr>
+            <div class="total-row final-total">
+              <span class="fw-bold">Total</span>
+              <span class="fw-bold">{{orderSummary.total}} DT</span>
+            </div>
+          </div>
+
+          <!-- Security Badge -->
+          <div class="security-info">
+            <i class="bi bi-shield-check text-success me-2"></i>
+            <small class="text-muted">Your payment information is secure and encrypted</small>
+          </div>
+
+          <!-- Place Order Button -->
+          <button class="btn btn-primary btn-lg w-100 mt-3" 
+                  (click)="processPayment()" 
+                  [disabled]="isLoading">
+            <span *ngIf="!isLoading">
+              <i class="bi bi-lock me-2"></i>
+              Place Order - {{orderSummary.total}} DT
+            </span>
+            <span *ngIf="isLoading">
+              <div class="spinner-border spinner-border-sm me-2"></div>
+              Processing...
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

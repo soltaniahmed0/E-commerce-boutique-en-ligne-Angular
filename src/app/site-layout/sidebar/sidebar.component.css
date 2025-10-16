@@ -1,3 +1,298 @@
-a:active{background-color: gold}
-a:hover{background-color: gold}
+/* Modern Sidebar Styles */
+
+.sidebar-container {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  overflow: hidden;
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.sidebar-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Sidebar Content */
+.sidebar-content {
+  padding: 1.5rem 0;
+}
+
+/* Sidebar Sections */
+.sidebar-section {
+  margin-bottom: 2rem;
+  padding: 0 1.5rem;
+}
+
+.sidebar-section:last-child {
+  margin-bottom: 0;
+}
+
+.sidebar-section-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e9ecef;
+  display: flex;
+  align-items: center;
+}
+
+/* Sidebar Links */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.75rem;
+  color: #495057;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-link:hover {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #667eea;
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.sidebar-link.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.sidebar-link.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: white;
+  border-radius: 0 2px 2px 0;
+}
+
+/* Category Links */
+.category-link {
+  position: relative;
+}
+
+.category-link::after {
+  content: '';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #6c757d;
+  transition: all 0.3s ease;
+}
+
+.category-link:hover::after {
+  border-top-color: #667eea;
+}
+
+.category-link.active::after {
+  border-top-color: white;
+}
+
+/* Admin Links */
+.admin-link {
+  background: linear-gradient(135deg, rgba(220, 53, 69, 0.1) 0%, rgba(231, 76, 60, 0.1) 100%);
+  border: 1px solid rgba(220, 53, 69, 0.2);
+}
+
+.admin-link:hover {
+  background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%);
+  color: white;
+  transform: translateX(5px);
+}
+
+/* Filter Links */
+.filter-link {
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.filter-link:hover {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+}
+
+/* Category List */
+.category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Filter Options */
+.filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Offer Banner */
+.offer-banner {
+  background: linear-gradient(135deg, rgba(40, 167, 69, 0.1) 0%, rgba(32, 201, 151, 0.1) 100%);
+  border: 2px dashed #28a745;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.offer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.offer-text {
+  font-weight: 600;
+  color: #28a745;
+  font-size: 0.9rem;
+}
+
+.offer-details {
+  color: #6c757d;
+  font-size: 0.8rem;
+}
+
+/* Badges */
+.badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+}
+
+.badge.bg-primary {
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+}
+
+.badge.bg-light {
+  background: #f8f9fa !important;
+  color: #495057 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar-container {
+    position: static;
+    margin-bottom: 2rem;
+  }
+  
+  .sidebar-content {
+    padding: 1rem 0;
+  }
+  
+  .sidebar-section {
+    padding: 0 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .sidebar-link {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar-header {
+    padding: 1rem;
+  }
+  
+  .sidebar-title {
+    font-size: 1.1rem;
+  }
+  
+  .sidebar-section-title {
+    font-size: 0.8rem;
+  }
+  
+  .offer-banner {
+    padding: 0.75rem;
+  }
+}
+
+/* Animation for sidebar items */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.sidebar-link {
+  animation: slideInLeft 0.6s ease forwards;
+}
+
+.sidebar-link:nth-child(1) { animation-delay: 0.1s; }
+.sidebar-link:nth-child(2) { animation-delay: 0.2s; }
+.sidebar-link:nth-child(3) { animation-delay: 0.3s; }
+.sidebar-link:nth-child(4) { animation-delay: 0.4s; }
+.sidebar-link:nth-child(5) { animation-delay: 0.5s; }
+
+/* Hover effects for icons */
+.sidebar-link i {
+  transition: all 0.3s ease;
+}
+
+.sidebar-link:hover i {
+  transform: scale(1.1);
+}
+
+/* Active state for icons */
+.sidebar-link.active i {
+  transform: scale(1.1);
+}
+
+/* Custom scrollbar for sidebar */
+.sidebar-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 2px;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 2px;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5a6fd8, #6a4190);
+}
 

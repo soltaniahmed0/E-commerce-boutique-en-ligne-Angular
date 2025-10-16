@@ -1,1 +1,337 @@
+/* Modern Login/Signup Styling */
 
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-secondary);
+  padding: 2rem 1rem;
+}
+
+.login-card {
+  background: var(--bg-primary);
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 40px var(--shadow-color);
+  padding: 3rem;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.login-card:hover {
+  box-shadow: 0 25px 50px var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-title {
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+/* Form Styling */
+.login-form,
+.signup-form {
+  margin-top: 1.5rem;
+}
+
+.form-label {
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.form-control {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+  transform: translateY(-1px);
+}
+
+.form-control::placeholder {
+  color: var(--text-muted);
+}
+
+.form-control.is-invalid {
+  border-color: var(--danger-color);
+}
+
+.invalid-feedback {
+  color: var(--danger-color);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Button Styling */
+.btn {
+  border-radius: 0.75rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-outline-primary {
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  background: transparent;
+}
+
+.btn-outline-primary:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.btn-outline-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Form Actions */
+.form-actions {
+  margin-top: 2rem;
+}
+
+.divider {
+  text-align: center;
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border-color);
+}
+
+.divider span {
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  padding: 0 1rem;
+  font-size: 0.875rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Alert Styling */
+.alert {
+  border-radius: 0.75rem;
+  border: none;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.alert-danger {
+  background: rgba(220, 53, 69, 0.1);
+  color: var(--danger-color);
+  border-left: 4px solid var(--danger-color);
+}
+
+.alert-success {
+  background: rgba(40, 167, 69, 0.1);
+  color: var(--success-color);
+  border-left: 4px solid var(--success-color);
+}
+
+/* Spinner */
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .login-container {
+    padding: 1rem;
+  }
+  
+  .login-card {
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+  }
+  
+  .login-title {
+    font-size: 1.75rem;
+  }
+  
+  .form-control {
+    padding: 0.625rem 0.875rem;
+  }
+  
+  .btn {
+    padding: 0.625rem 1.25rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .login-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .login-title {
+    font-size: 1.5rem;
+  }
+  
+  .row .col-md-6 {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Dark Mode Enhancements */
+.dark-theme .login-card {
+  background: var(--bg-primary);
+  border-color: var(--border-color);
+}
+
+.dark-theme .form-control {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.dark-theme .form-control:focus {
+  background: var(--bg-secondary);
+  border-color: var(--primary-color);
+}
+
+.dark-theme .alert-danger {
+  background: rgba(220, 53, 69, 0.15);
+}
+
+.dark-theme .alert-success {
+  background: rgba(40, 167, 69, 0.15);
+}
+
+/* Animation for form switching */
+.login-form,
+.signup-form {
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading state */
+.btn:disabled {
+  position: relative;
+}
+
+.btn:disabled::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1rem;
+  height: 1rem;
+  margin: -0.5rem 0 0 -0.5rem;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Debug Section */
+.debug-section {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+}
+
+.debug-section .btn {
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+}
+
+/* Development only - remove in production */
+.debug-section {
+  background: rgba(255, 193, 7, 0.1);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-top: 1rem;
+}

@@ -1,6 +1,93 @@
-<div class="py-4"></div><a href="products" class="list-group-item py-3" > All </a>
-<a href="products/add-product" class="list-group-item py-3" *ngIf="connid=='1'"> Add product </a>
-<div class="list-group" *ngFor="let cat of categoryl">
-  <a href="products/categories/{{cat.id}}" class="list-group-item py-3" > {{cat.name}} </a>
+<!-- Modern Sidebar -->
+<div class="sidebar-container">
+  <!-- Sidebar Header -->
+  <div class="sidebar-header">
+    <h5 class="sidebar-title">
+      <i class="bi bi-grid-3x3-gap me-2"></i>
+      Categories
+    </h5>
+  </div>
+
+  <!-- Sidebar Content -->
+  <div class="sidebar-content">
+    <!-- All Products -->
+    <div class="sidebar-section">
+      <a (click)="navigateToProducts()" class="sidebar-link">
+        <i class="bi bi-grid me-2"></i>
+        <span>All Products</span>
+        <span class="badge bg-primary ms-auto">{{getTotalProducts()}}</span>
+      </a>
+    </div>
+
+    <!-- Admin Section -->
+    <div class="sidebar-section" *ngIf="connid=='1'">
+      <h6 class="sidebar-section-title">
+        <i class="bi bi-gear me-1"></i>
+        Admin Panel
+      </h6>
+      <a (click)="navigateToAddProduct()" class="sidebar-link admin-link">
+        <i class="bi bi-plus-circle me-2"></i>
+        <span>Add Product</span>
+      </a>
+    </div>
+
+    <!-- Categories -->
+    <div class="sidebar-section">
+      <h6 class="sidebar-section-title">
+        <i class="bi bi-tags me-1"></i>
+        Shop by Category
+      </h6>
+      <div class="category-list">
+        <a *ngFor="let cat of categoryl" 
+           (click)="navigateToCategory(cat.id)" 
+           class="sidebar-link category-link">
+          <i class="bi bi-circle-fill me-2" [style.color]="getCategoryColor(cat.id)"></i>
+          <span>{{cat.name}}</span>
+          <span class="badge bg-light text-dark ms-auto">{{getCategoryCount(cat.id)}}</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick Filters -->
+    <div class="sidebar-section">
+      <h6 class="sidebar-section-title">
+        <i class="bi bi-funnel me-1"></i>
+        Quick Filters
+      </h6>
+      <div class="filter-options">
+        <a class="sidebar-link filter-link" (click)="filterByPrice('low')">
+          <i class="bi bi-arrow-down me-2"></i>
+          <span>Price: Low to High</span>
+        </a>
+        <a class="sidebar-link filter-link" (click)="filterByPrice('high')">
+          <i class="bi bi-arrow-up me-2"></i>
+          <span>Price: High to Low</span>
+        </a>
+        <a class="sidebar-link filter-link" (click)="filterByRating()">
+          <i class="bi bi-star-fill me-2"></i>
+          <span>Top Rated</span>
+        </a>
+        <a class="sidebar-link filter-link" (click)="filterByNew()">
+          <i class="bi bi-clock me-2"></i>
+          <span>New Arrivals</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Special Offers -->
+    <div class="sidebar-section">
+      <h6 class="sidebar-section-title">
+        <i class="bi bi-gift me-1"></i>
+        Special Offers
+      </h6>
+      <div class="offer-banner">
+        <div class="offer-content">
+          <i class="bi bi-percent text-success"></i>
+          <span class="offer-text">Up to 50% Off</span>
+        </div>
+        <small class="offer-details">On selected items</small>
+      </div>
+    </div>
+  </div>
 </div>
 

@@ -11,9 +11,9 @@ export class LoginService {
   url="http://localhost:3000/login";
   constructor(private httpClient:HttpClient) { }
 
-  getUser():Observable<User>{
+  getUser():Observable<User[]>{
 
-    return this.httpClient.get<User>(this.url);
+    return this.httpClient.get<User[]>(this.url);
   }
 
   addUser(user:User):Observable<User>{

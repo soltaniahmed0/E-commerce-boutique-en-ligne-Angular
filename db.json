@@ -1,0 +1,59 @@
+{
+  "login": [
+    {
+      "id": 1,
+      "EMail": "test@example.com",
+      "Password": "123456",
+      "FirstName": "Test",
+      "LastName": "User",
+      "Country": "Tunisia"
+    },
+    {
+      "id": 2,
+      "EMail": "admin@example.com",
+      "Password": "admin123",
+      "FirstName": "Admin",
+      "LastName": "User",
+      "Country": "Tunisia"
+    }
+  ],
+  "product": [
+    {
+      "id": 1,
+      "name": "Stylish T-Shirt",
+      "description": "Comfortable cotton t-shirt",
+      "price": 25,
+      "img": "http://localhost:4200/assets/img/f1.jpg",
+      "rating": "8",
+      "review": "15",
+      "category_id": 2,
+      "color": "#FF5733"
+    },
+    {
+      "id": 2,
+      "name": "Designer Jeans",
+      "description": "Premium denim jeans",
+      "price": 50,
+      "img": "http://localhost:4200/assets/img/f2.jpg",
+      "rating": "9",
+      "review": "23",
+      "category_id": 2,
+      "color": "#2E86AB"
+    }
+  ],
+  "categories": [
+    {
+      "id": 2,
+      "name": "Men's Fashion"
+    },
+    {
+      "id": 3,
+      "name": "Women's Fashion"
+    },
+    {
+      "id": 4,
+      "name": "Kids' Fashion"
+    }
+  ],
+  "cart": []
+}

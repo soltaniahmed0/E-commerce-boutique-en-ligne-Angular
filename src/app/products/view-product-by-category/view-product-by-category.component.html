@@ -1,38 +1,183 @@
 
 
+<!-- Category Hero Section -->
+<section class="category-hero py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <h1 class="category-title mb-3">
+          <i class="bi bi-tags me-3"></i>
+          {{getCategoryName()}} Collection
+        </h1>
+        <p class="category-description mb-4">
+          Discover our amazing {{getCategoryName().toLowerCase()}} collection with the latest trends and styles.
+        </p>
+        <div class="category-stats">
+          <span class="badge bg-primary me-2">
+            <i class="bi bi-grid me-1"></i>{{productL?.length || 0}} Products
+          </span>
+          <span class="badge bg-success me-2">
+            <i class="bi bi-star me-1"></i>Top Rated
+          </span>
+          <span class="badge bg-info">
+            <i class="bi bi-truck me-1"></i>Free Shipping
+          </span>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="category-image">
+          <img src="assets/img/category-hero.jpg" alt="Category" class="img-fluid rounded-3 shadow-lg">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section class="py-0">
-
-  <div class="container px-4 px-lg-5 mt-5">
-    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-      <div class="col mb-5" *ngFor="let prod of productL ">
-        <div class="card h-100">
-          <!-- Product image-->
-          <img class="card-img-top" src="{{prod.img}}" alt="..." height="200px">
-          <!-- Product details-->
-          <div class="card-body p-4">
-            <div class="text-center">
-              <!-- Product name-->
-              <h5 class="fw-bolder"><a href="products/view-product/{{prod.id}}"> {{prod.name}}</a></h5>
-              <!-- Product reviews-->
-              <div class="d-flex justify-content-center small text-warning mb-2">
-                <div class="bi-star-fill"></div>
-                <div class="bi-star-fill"></div>
-                <div class="bi-star-fill"></div>
-                <div class="bi-star-fill"></div>
-                <div class="bi-star-fill"></div>
-              </div>
-              <!-- Product price-->
-              {{prod.price}} DT
-            </div>
+<!-- Filter and Sort Section -->
+<section class="filter-section py-4">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h4 class="mb-0 fw-bold">
+          <i class="bi bi-funnel me-2"></i>
+          Filter & Sort
+        </h4>
+        <p class="text-muted mb-0">Refine your search results</p>
+      </div>
+      <div class="col-md-6">
+        <div class="d-flex justify-content-md-end gap-3">
+          <!-- Sort dropdown -->
+          <div class="dropdown">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+              <i class="bi bi-sort-down me-1"></i>Sort by
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" (click)="sortProducts('name')">Name A-Z</a></li>
+              <li><a class="dropdown-item" href="#" (click)="sortProducts('price')">Price Low-High</a></li>
+              <li><a class="dropdown-item" href="#" (click)="sortProducts('rating')">Rating</a></li>
+            </ul>
           </div>
-          <!-- Product actions-->
-          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="products/view-product/{{prod.id}}">View Details</a></div>
+          
+          <!-- View toggle -->
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-primary" [class.active]="viewMode === 'grid'" (click)="setViewMode('grid')">
+              <i class="bi bi-grid"></i>
+            </button>
+            <button type="button" class="btn btn-outline-primary" [class.active]="viewMode === 'list'" (click)="setViewMode('list')">
+              <i class="bi bi-list"></i>
+            </button>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
 
+<!-- Products Grid Section -->
+<section class="products-section py-5">
+  <div class="container">
+    <!-- Loading spinner -->
+    <div class="text-center py-5" *ngIf="!productL">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid" [ngClass]="{'compact': viewMode === 'list', 'large': viewMode === 'grid'}" *ngIf="productL && productL.length > 0">
+      <div class="product-card" *ngFor="let prod of productL; trackBy: trackByProductId">
+        <!-- Product Image -->
+        <div class="product-image">
+          <img [src]="prod.img" [alt]="prod.name" loading="lazy">
+          
+          <!-- Product Badge -->
+          <div class="product-badge" 
+               [class.new]="prod.rating >= 9" 
+               [class.sale]="prod.price > 100" 
+               [class.featured]="prod.rating >= 8">
+            <span *ngIf="prod.rating >= 9">New</span>
+            <span *ngIf="prod.price > 100">Sale</span>
+            <span *ngIf="prod.rating >= 8 && prod.rating < 9">Featured</span>
+          </div>
+          
+          <!-- Product Actions -->
+          <div class="product-actions">
+            <button class="product-action-btn" (click)="addToWishlist(prod)" 
+                    [title]="'Add to Wishlist'">
+              <i class="bi bi-heart"></i>
+            </button>
+            <button class="product-action-btn" routerLink="view-product/{{prod.id}}" 
+                    [title]="'Quick View'">
+              <i class="bi bi-eye"></i>
+            </button>
+            <button class="product-action-btn" (click)="addToCart(prod)" 
+                    [title]="'Add to Cart'">
+              <i class="bi bi-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Product Details -->
+        <div class="product-details">
+          <!-- Category -->
+          <div class="product-category">
+            {{getCategoryName(prod.category_id)}}
+          </div>
+          
+          <!-- Product Name -->
+          <h5 class="product-name">
+            <a routerLink="view-product/{{prod.id}}" class="text-decoration-none">
+              {{prod.name}}
+            </a>
+          </h5>
+          
+          <!-- Product Description -->
+          <p class="product-description">{{prod.description}}</p>
+          
+          <!-- Rating -->
+          <div class="product-rating">
+            <div class="stars">
+              <i class="bi bi-star-fill" *ngFor="let star of getStars(prod.rating)"></i>
+              <i class="bi bi-star" *ngFor="let star of getEmptyStars(prod.rating)"></i>
+            </div>
+            <span class="rating-text">({{prod.review}} reviews)</span>
+          </div>
+          
+          <!-- Price -->
+          <div class="product-price">
+            <span class="current-price">{{prod.price}} DT</span>
+            <span class="original-price" *ngIf="prod.price > 100">{{prod.price + 50}} DT</span>
+            <span class="discount-badge" *ngIf="prod.price > 100">Save 50 DT</span>
+          </div>
+          
+          <!-- Color Swatch -->
+          <div class="product-color mt-2" *ngIf="prod.color">
+            <span class="color-label">Color:</span>
+            <div class="color-swatch" [style.background-color]="prod.color" [title]="prod.color"></div>
+          </div>
+          
+          <!-- Actions -->
+          <div class="product-footer">
+            <button class="add-to-cart-btn" (click)="addToCart(prod)">
+              <i class="bi bi-cart-plus me-2"></i>Add to Cart
+            </button>
+            <button class="wishlist-btn" (click)="addToWishlist(prod)" 
+                    [title]="'Add to Wishlist'">
+              <i class="bi bi-heart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- No products message -->
+    <div class="text-center py-5" *ngIf="productL && productL.length === 0">
+      <i class="bi bi-search display-1 text-muted"></i>
+      <h4 class="mt-3">No products found in this category</h4>
+      <p class="text-muted">Try browsing other categories or adjust your search</p>
+      <button class="btn btn-primary" routerLink="/products">
+        <i class="bi bi-arrow-left me-2"></i>Back to All Products
+      </button>
     </div>
   </div>
 </section>

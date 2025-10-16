@@ -11,7 +11,9 @@ import { UpdateProductComponent } from './update-product/update-product.componen
 import { ViewProductComponent } from './view-product/view-product.component';
 import {NgbCarouselModule, NgbRatingModule} from "@ng-bootstrap/ng-bootstrap";
 import {IvyCarouselModule} from "angular-responsive-carousel";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { RatingComponent } from '../shared/rating/rating.component';
+import { ReviewComponent } from '../shared/review/review.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import {FormsModule} from "@angular/forms";
     ViewAllProductComponent,
     DeleteProductComponent,
     UpdateProductComponent,
-    ViewProductComponent
+    ViewProductComponent,
+    RatingComponent,
+    ReviewComponent
   ],
     imports: [
         CommonModule,
@@ -30,6 +34,7 @@ import {FormsModule} from "@angular/forms";
         NgbCarouselModule,
         IvyCarouselModule,
         FormsModule,
+        ReactiveFormsModule,
         NgbRatingModule
     ]
 })
